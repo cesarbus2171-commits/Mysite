@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class productos(models.Model):
+class Productos(models.Model):
     nombre = models.CharField()
     descripcion = models.TextField()
     precio = models.DecimalField()
