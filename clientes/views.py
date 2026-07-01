@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import clientes
+from .models import cliente
+from clientes import models
 
 
 def listaclientes(request):
@@ -8,12 +9,26 @@ def listaclientes(request):
 
 def creaclientes(request):
     if request.method == 'POST':
-        nvocliente = clientes(
-            nombre=request.POST['nombre'],
-            apellido=request.POST['apellido'],
-            sexo=request.POST['sexo'],
-            tipo=request.POST['tipo'],
-            direccion=request.POST['direccion']
+        # Obtenemos los datos del formulario
+        print("DATOS RECIBIDOS:", request.POST)
+
+        nombre = request.POST.get('nombre')
+        apellido = request.POST.get('apellido')
+        sexo = request.POST.get('sexo')
+        tipo = request.POST.get('tipo')
+        direccion = request.POST.get('direccion')
+
+        # Creamos y guardamos el nuevo objeto
+        nuevo_cliente = cliente(
+            nombre=nombre,
+            apellido=apellido,
+            sexo=sexo,
+            tipo=tipo,
+            direccion=direccion
         )
-        nvocliente.save()
-        return redirect('/pageclientes/')
+        nuevo_cliente.save()
+        
+        # Redirigimos a una página de confirmación o de vuelta al formulario
+        return redirect('/pageclientes/') 
+    
+    return render(request, 'clientes/clientes.html')
