@@ -726,6 +726,17 @@
             </div>
         </section>
 
+    </div> <h2> Formilario de Clientes</h2>
+    <form action="/pageclientes/nuevo/" method="post">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="apellido" placeholder="Apellido" required>
+        <input type="text" name="sexo" placeholder="Sexo" required>
+        <input type="text" name="tipo" placeholder="Tipo" required>
+        <input type="text" name="direccion" placeholder="Direccion" required>
+        <br><button>Guardar</button>
+    </form>
+
         <!-- ESTADÍSTICAS -->
         <div>
             <h2 class="section-title">Resumen del Mes</h2>
