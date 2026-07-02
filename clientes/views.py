@@ -4,8 +4,8 @@ from clientes import models
 
 
 def listaclientes(request):
-
-    return render(request, 'clientes/clientes.html')
+    consultaclientes= cliente.objects.all()
+    return render(request, 'clientes/clientes.html', {'consultaclientes': consultaclientes})
 
 def creaclientes(request):
     if request.method == 'POST':

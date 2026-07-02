@@ -7,7 +7,10 @@
     <base href="/">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
-
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
         :root {
             --negro: #0d0d0d;
             --negro-suave: #1a1a1a;
@@ -736,7 +739,27 @@
         <input type="text" name="direccion" placeholder="Direccion" required>
         <br><button>Guardar</button>
     </form>
-
+        
+    <h2 style="color: red;"> Lista de Clientes</h2>
+    <table style="width: 25%;">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Sexo</th>
+            <th>Tipo</th>
+            <th>Direccion</th>
+        </tr>
+        {% for cliente in consultaclientes %}
+        <tr>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.apellido }}</td>
+            <td>{{ cliente.sexo }}</td>
+            <td>{{ cliente.tipo }}</td>
+            <td>{{ cliente.direccion }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
         <!-- ESTADÍSTICAS -->
         <div>
             <h2 class="section-title">Resumen del Mes</h2>
