@@ -10,7 +10,6 @@ def listaclientes(request):
 def creaclientes(request):
     if request.method == 'POST':
         # Obtenemos los datos del formulario
-        print("DATOS RECIBIDOS:", request.POST)
 
         nombre = request.POST.get('nombre')
         apellido = request.POST.get('apellido')

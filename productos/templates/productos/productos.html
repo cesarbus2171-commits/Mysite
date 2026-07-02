@@ -7,6 +7,11 @@
     <base href="/">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
+        
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
 
         :root {
             --negro: #0d0d0d;
@@ -746,6 +751,38 @@
                 🏎️
             </div>
         </section>
+
+            </div> <h2> Formulario de Productos</h2>
+    <form action="/pageproductos/nuevo/" method="post">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="descripcion" placeholder="Descripción" required>
+        <input type="number" name="precio" placeholder="Precio" required>
+        <input type="number" name="stock" placeholder="Stock" required>
+        <input type="text" name="categorias" placeholder="Categorías" required>
+        <br><button>Guardar</button>
+    </form>
+        
+    <h2 style="color: red;"> Lista de Productos</h2>
+    <table style="width: 25%;">
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Categorías</th>
+        </tr>
+        {% for producto in consultaproductos %}
+        <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.stock }}</td>
+            <td>{{ producto.categorias }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
 
         <!-- ESTADÍSTICAS -->
         <div>

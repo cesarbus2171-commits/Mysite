@@ -7,6 +7,11 @@
     <base href="/">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
+        
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
 
         :root {
             --negro: #0d0d0d;
@@ -835,6 +840,39 @@
                 👥
             </div>
         </section>
+
+        
+    </div> <h2> Formulario de Empleados</h2>
+    <form action="/pageempleados/nuevo/" method="post">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="apellido" placeholder="Apellido" required>
+        <input type="text" name="sexo" placeholder="Sexo" required>
+        <input type="text" name="puesto" placeholder="Puesto" required>
+        <input type="text" name="edad" placeholder="Edad" required>
+        <br><button>Guardar</button>
+    </form>
+        
+    <h2 style="color: red;"> Lista de Empleados</h2>
+    <table style="width: 25%;">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Sexo</th>
+            <th>Puesto</th>
+            <th>Edad</th>
+        </tr>
+        {% for empleado in consultaempleados %}
+        <tr>
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.apellido }}</td>
+            <td>{{ empleado.sexo }}</td>
+            <td>{{ empleado.puesto }}</td>
+            <td>{{ empleado.edad }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
 
         <!-- ESTADÍSTICAS -->
         <div>

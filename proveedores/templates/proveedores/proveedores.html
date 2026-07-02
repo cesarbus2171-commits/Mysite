@@ -8,6 +8,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap');
 
+        table, th, td {
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        
         :root {
             --negro: #0d0d0d;
             --negro-suave: #1a1a1a;
@@ -820,6 +825,38 @@
                 🚛
             </div>
         </section>
+
+        </div> <h2> Formulario de Proveedores</h2>
+    <form action="/pageproveedores/nuevo/" method="post">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="apellido" placeholder="Apellido" required>
+        <input type="text" name="sexo" placeholder="Sexo" required>
+        <input type="text" name="empresa" placeholder="Empresa" required>
+        <input type="text" name="direccion" placeholder="Dirección" required>
+        <br><button>Guardar</button>
+    </form>
+        
+    <h2 style="color: red;"> Lista de Proveedores</h2>
+    <table style="width: 25%;">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Sexo</th>
+            <th>Empresa</th>
+            <th>Dirección</th>
+        </tr>
+        {% for proveedor in consultaproveedores %}
+        <tr>
+            <td>{{ proveedor.nombre }}</td>
+            <td>{{ proveedor.apellido }}</td>
+            <td>{{ proveedor.sexo }}</td>
+            <td>{{ proveedor.empresa }}</td>
+            <td>{{ proveedor.direccion }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
 
         <!-- ESTADÍSTICAS -->
         <div>
