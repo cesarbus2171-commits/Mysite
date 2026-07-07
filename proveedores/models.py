@@ -8,6 +8,4 @@ class proveedor(models.Model):
     sexo = models.CharField(max_length=20)
     empresa = models.CharField(max_length=100)
     direccion = models.CharField(max_length=200)
-    class Meta:
-        managed = False     
-        db_table = 'proveedores_proveedores'
+    
