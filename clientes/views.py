@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import cliente
+from .models import Cliente
 from clientes import models
 
 
 def listaclientes(request):
-    consultaclientes= cliente.objects.all()
+    consultaclientes= Cliente.objects.all()
     return render(request, 'clientes/clientes.html', {'consultaclientes': consultaclientes})
 
 def creaclientes(request):
@@ -18,7 +18,7 @@ def creaclientes(request):
         direccion = request.POST.get('direccion')
 
         # Creamos y guardamos el nuevo objeto
-        nuevo_cliente = cliente(
+        nuevo_cliente = Cliente(
             nombre=nombre,
             apellido=apellido,
             sexo=sexo,

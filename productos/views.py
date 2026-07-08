@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import producto
+from .models import Producto
 
 
 
 def listaproductos(request):
-    consultaproductos= producto.objects.all()
+    consultaproductos= Producto.objects.all()
     return render(request, 'productos/productos.html', {'consultaproductos': consultaproductos})
 
 def creaproductos(request):
@@ -18,7 +18,7 @@ def creaproductos(request):
         categorias = request.POST.get('categorias')
 
         # Creamos y guardamos el nuevo objeto
-        nuevo_producto = producto(
+        nuevo_producto = Producto(
             nombre=nombre,
             descripcion=descripcion,
             precio=precio,

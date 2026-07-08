@@ -1,6 +1,6 @@
 from django.db import models
 from proveedores.models import proveedor 
-from productos.models import producto
+from productos.models import Producto
 
 class compras(models.Model):
     folio = models.CharField(max_length=50)
@@ -10,4 +10,4 @@ class compras(models.Model):
     total = models.FloatField()
     # Relaciones de muchos a muchos:
     proveedor = models.ManyToManyField(proveedor)
-    producto = models.ManyToManyField(producto)
+    producto = models.ManyToManyField(Producto)
