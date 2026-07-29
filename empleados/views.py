@@ -1,29 +1,19 @@
 from django.shortcuts import render, redirect
-from .models import empleado
-from clientes import models
-
+from .models import Empleado
 
 def listaempleados(request):
-    consultaempleados= empleado.objects.all()
-    return render(request, 'empleados/empleados.html', {'consultaempleados': consultaempleados})
+    empleados = Empleado.objects.all()
+    return render(request, 'empleados/empleados.html', {'empleados': empleados})
 
-def creaempleados(request):
+def creaempleado(request):
     if request.method == 'POST':
-        # Obtenemos los datos del formulario
-
-        nombre = request.POST.get('nombre')
-        apellido = request.POST.get('apellido')
-        sexo = request.POST.get('sexo')
-        puesto = request.POST.get('puesto')
-        edad = request.POST.get('edad')
-
-        # Creamos y guardamos el nuevo objeto
-        nuevo_empleado = empleado(
-            nombre=nombre,
-            apellido=apellido,
-            sexo=sexo,
-            puesto=puesto,
-            edad=edad
+        nuevo = Empleado(
+            nombre=request.POST.get('nombre'),
+            puesto=request.POST.get('puesto'),
+            salario=request.POST.get('salario'),
+            fecha_ingreso=request.POST.get('fecha_ingreso'),
+            email=request.POST.get('email')
         )
-        nuevo_empleado.save()
+        nuevo.save()
         return redirect('/pageempleados/')
+    return render(request, 'empleados/empleados.html')

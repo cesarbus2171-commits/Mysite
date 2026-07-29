@@ -9,21 +9,13 @@ def listaproductos(request):
 
 def creaproductos(request):
     if request.method == 'POST':
-        # Obtenemos los datos del formulario
-
-        nombre = request.POST.get('nombre')
-        descripcion = request.POST.get('descripcion')
-        precio = request.POST.get('precio')
-        stock = request.POST.get('stock')
-        categorias = request.POST.get('categorias')
-
-        # Creamos y guardamos el nuevo objeto
         nuevo_producto = Producto(
-            nombre=nombre,
-            descripcion=descripcion,
-            precio=precio,
-            stock=stock,
-            categorias=categorias
+            nombre=request.POST.get('nombre'),
+            descripcion=request.POST.get('descripcion'),
+            precio=request.POST.get('precio'),
+            stock=request.POST.get('stock'),
+            categoria=request.POST.get('categoria'),
+            marca=request.POST.get('marca'), 
         )
         nuevo_producto.save()
         return redirect('/pageproductos/')
