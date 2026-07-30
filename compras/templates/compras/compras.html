@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Compras</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2 { color: #333; }
+        
+        /* Estilos del formulario */
+        .form-container { margin-bottom: 40px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #fafafa; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="date"], input[type="number"] { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; background-color: #007BFF; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+
+        /* Estilos de la tabla */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #007BFF; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Módulo de Compras</h1>
+
+        <!-- Formulario para crear una nueva compra -->
+        <div class="form-container">
+            <h2>Registrar Nueva Compra</h2>
+            <!-- El action apunta a la ruta definida en urls.py -->
+            <form action="/pagecompras/nuevo/" method="POST">
+                {% csrf_token %} <!-- Etiqueta de seguridad obligatoria en Django -->
+                
+                <div class="form-group">
+                    <label for="folio">Folio:</label>
+                    <input type="text" id="folio" name="folio" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subtotal">Subtotal:</label>
+                    <input type="number" id="subtotal" name="subtotal" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="iva">IVA:</label>
+                    <input type="number" id="iva" name="iva" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="total">Total:</label>
+                    <input type="number" id="total" name="total" step="0.01" required>
+                </div>
+
+                <button type="submit">Guardar Compra</button>
+            </form>
+        </div>
+
+        <!-- Tabla para listar las compras existentes -->
+        <h2>Historial de Compras</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Fecha</th>
+                    <th>Subtotal</th>
+                    <th>IVA</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iteramos sobre la variable consultacompras enviada desde views.py -->
+                {% for compra in consultacompras %}
+                <tr>
+                    <td>{{ compra.folio }}</td>
+                    <td>{{ compra.fecha|date:"d/m/Y" }}</td>
+                    <td>${{ compra.subtotal }}</td>
+                    <td>${{ compra.iva }}</td>
+                    <td>${{ compra.total }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" style="text-align: center;">No hay compras registradas aún.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
