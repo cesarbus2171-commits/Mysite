@@ -15,7 +15,8 @@ def creaproductos(request):
             precio=request.POST.get('precio'),
             stock=request.POST.get('stock'),
             categoria=request.POST.get('categoria'),
-            marca=request.POST.get('marca'), 
+            marca=request.POST.get('marca'),
+            color=request.POST.get('color') 
         )
         nuevo_producto.save()
         return redirect('/pageproductos/')

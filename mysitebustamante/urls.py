@@ -27,4 +27,6 @@ urlpatterns = [
     path('pageusuarios/', include('usuarios.urls')),
     path('pageventas/', include('ventas.urls')),
     path('pagecompras/', include('compras.urls')),
+    path('pagegrupos/', include('grupos.urls')),
+    path('pagenominas/', include('nomina.urls')),
 ]

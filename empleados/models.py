@@ -1,12 +1,15 @@
 from django.db import models
 
-class Empleado(models.Model): 
+class Empleado(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     sexo = models.CharField(max_length=20)
     puesto = models.CharField(max_length=100)
     departamento = models.CharField(max_length=100)
     estudios = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.nombre} {self.apellido}"
 
 class nomina(models.Model):
     numperiodo = models.CharField(max_length=50)
@@ -15,4 +18,4 @@ class nomina(models.Model):
     perceciones = models.FloatField()
     deducciones = models.FloatField()
     total = models.FloatField()
-    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE, related_name='nominas')
+    empleado = models.ForeignKey(Empleado, on_delete=models.CASCADE, related_name='nominas_empleado')

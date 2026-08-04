@@ -9,10 +9,11 @@ def creaempleado(request):
     if request.method == 'POST':
         nuevo = Empleado(
             nombre=request.POST.get('nombre'),
+            apellido=request.POST.get('apellido'),
             puesto=request.POST.get('puesto'),
-            salario=request.POST.get('salario'),
-            fecha_ingreso=request.POST.get('fecha_ingreso'),
-            email=request.POST.get('email')
+            sexo=request.POST.get('sexo'),
+            departamento=request.POST.get('departamento'),
+            estudios=request.POST.get('estudios'),
         )
         nuevo.save()
         return redirect('/pageempleados/')

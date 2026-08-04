@@ -759,7 +759,9 @@
         <input type="text" name="descripcion" placeholder="Descripción" required>
         <input type="number" name="precio" placeholder="Precio" required>
         <input type="number" name="stock" placeholder="Stock" required>
-        <input type="text" name="categorias" placeholder="Categorías" required>
+        <input type="text" name="marca" placeholder="Marca" required>
+        <input type="text" name="color" placeholder="Color" required>
+        <input type="text" name="categoria" placeholder="Categorías" required>
         <br><button>Guardar</button>
     </form>
         
@@ -771,6 +773,8 @@
             <th>Precio</th>
             <th>Stock</th>
             <th>Categorías</th>
+            <th>Marca</th>
+            <th>Color</th>
         </tr>
         {% for producto in consultaproductos %}
         <tr>
@@ -778,7 +782,9 @@
             <td>{{ producto.descripcion }}</td>
             <td>{{ producto.precio }}</td>
             <td>{{ producto.stock }}</td>
-            <td>{{ producto.categorias }}</td>
+            <td>{{ producto.categoria }}</td>
+            <td>{{ producto.marca }}</td>
+            <td>{{ producto.color }}</td>
         </tr>
         {% endfor %}
     </table>

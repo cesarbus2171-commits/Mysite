@@ -1,10 +1,10 @@
 from django.contrib import admin
 from .models import Empleado
 
-class empleadoAdmin(admin.ModelAdmin):
-    list_display= ()
-    search_fields= ()
-    list_filter= ()
-    ordering= []
+class EmpleadoAdmin(admin.ModelAdmin):
+    list_display= ('id', 'nombre', 'apellido', 'sexo', 'puesto', 'departamento', 'estudios')
+    search_fields= ('apellido', 'sexo')
+    list_filter= ('sexo', 'puesto')
+    ordering= ['apellido']
 
-admin.site.register(Empleado, empleadoAdmin)
+admin.site.register(Empleado, EmpleadoAdmin)

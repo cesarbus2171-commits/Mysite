@@ -1,3 +1,10 @@
 from django.contrib import admin
+from .models import proveedor
 
-# Register your models here.
+class ProveedoresAdmin(admin.ModelAdmin):
+    list_display= ('id', 'nombre', 'apellido', 'sexo', 'empresa', 'direccion')
+    search_fields= ('nombre', 'apellido')
+    list_filter= ('sexo', 'empresa')
+    ordering= ['nombre']
+
+admin.site.register(proveedor, ProveedoresAdmin)

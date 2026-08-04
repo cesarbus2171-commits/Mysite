@@ -5,4 +5,3 @@ class usuario(models.Model):
     apellido = models.CharField(max_length=100)
     sexo = models.CharField(max_length=20)
     tipo = models.CharField(max_length=50)
-    # ¡Borramos el class Meta con el managed = False!

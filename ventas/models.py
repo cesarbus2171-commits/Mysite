@@ -7,6 +7,3 @@ class Venta(models.Model):
     productos = models.ManyToManyField(Producto)
     fecha_venta = models.DateField(auto_now_add=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)
-
-    class Meta:
-        db_table = 'ventas_venta'

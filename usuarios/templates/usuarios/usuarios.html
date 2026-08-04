@@ -843,26 +843,13 @@
             <th>Sexo</th>
             <th>Tipo</th>
         </tr>
+        
         {% for usuario in consultausuarios %}
         <tr>
             <td>{{ usuario.nombre }}</td>
             <td>{{ usuario.apellido }}</td>
             <td>{{ usuario.sexo }}</td>
             <td>{{ usuario.tipo }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <br>
-            <th>Empresa</th>
-            <th>Dirección</th>
-        </tr>
-        {% for proveedor in consultaproveedores %}
-        <tr>
-            <td>{{ proveedor.nombre }}</td>
-            <td>{{ proveedor.apellido }}</td>
-            <td>{{ proveedor.sexo }}</td>
-            <td>{{ proveedor.empresa }}</td>
-            <td>{{ proveedor.direccion }}</td>
         </tr>
         {% endfor %}
     </table>
